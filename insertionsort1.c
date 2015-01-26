@@ -10,21 +10,21 @@ void printArray(int ar[], int s) {
 int main() {
   int i, s;
   scanf("%d", &s);
-  int ar[s];
+  int ar[s-1];
 
   for (i=0; i<s; i++) {
     scanf("%d", &ar[i]);
   }
 
-  int temp = ar[s];
-  printArray(ar, s);
-  //if (ar[s-i] < temp) 
-  ar[i-1] = ar[i-2];
-  //printf("%d\n", ar[s-2]); 
+  int temp = ar[s-1];
+  int j=0;
 
-  // then put other old one in its stead
-  // and iterate backwards doing the same procedure
-
+  while (temp < ar[s-2-j]) {
+    ar[s-1-j] = ar[s-2-j];
+    j++;
+    printArray(ar, s);
+  }
+  ar[s-1-j] = temp;
   printArray(ar, s);
 
   return 0;
